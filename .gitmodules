@@ -1,0 +1,3 @@
+[submodule "lib/sigrem-lib"]
+	path = lib/sigrem-lib
+	url = ../sigrem-lib

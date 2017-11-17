@@ -1,3 +1,4 @@
+var sigremLib = './lib/sigrem-lib/remove-signature.js'
 browser.contextMenus.create({
   id: "remove-lines",
   title: "Remove signature lines"
@@ -6,7 +7,7 @@ browser.contextMenus.create({
 browser.contextMenus.onClicked.addListener(function(info, tab) {
   if (info.menuItemId == "remove-lines") {
     browser.tabs.executeScript({
-      file: "remove-signature.js"
+      file: sigremLib
     });
   }
 });
