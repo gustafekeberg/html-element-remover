@@ -6,6 +6,10 @@
 	"background": {
 		"scripts": ["background.js"]
 	},
+	"icons": {
+		"48": "icons/Proceedo-48.png",
+		"96": "icons/Proceedo-96.png"
+	},
 	"default_locale": "sv",
 	"permissions": [
 		"activeTab",
