@@ -3,12 +3,20 @@
 	"name": "__MSG_extensionName__",
 	"version": "1.2.0",
 	"description": "__MSG_extensionDescription__",
+	"author": "Gustaf Ekeberg",
 	"background": {
-		"scripts": ["background.js"]
+		"scripts": [
+			"background.js"
+		]
 	},
 	"icons": {
+		"20": "icons/Proceedo-20.png",
+		"25": "icons/Proceedo-25.png",
+		"30": "icons/Proceedo-30.png",
+		"40": "icons/Proceedo-40.png",
 		"48": "icons/Proceedo-48.png",
-		"96": "icons/Proceedo-96.png"
+		"96": "icons/Proceedo-96.png",
+		"256": "icons/Proceedo-256.png"
 	},
 	"default_locale": "sv",
 	"permissions": [

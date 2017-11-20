@@ -5,7 +5,7 @@ browser.contextMenus.create({
   title: contextMenuItem
 });
 
-browser.contextMenus.onClicked.addListener(function(info, tab) {
+browser.contextMenus.onClicked.addListener(function (info, tab) {
   if (info.menuItemId == "remove-lines") {
     browser.tabs.executeScript({
       file: sigremLib
