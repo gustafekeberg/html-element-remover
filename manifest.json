@@ -1,11 +1,12 @@
 {
 	"manifest_version": 2,
-	"name": "Signature line remover",
-	"version": "1.1",
-	"description": "Removes annoying signature line from requisitions aquired from http://www.proceedo.net/.",
+	"name": "__MSG_extensionName__",
+	"version": "1.2.0",
+	"description": "__MSG_extensionDescription__",
 	"background": {
 		"scripts": ["background.js"]
 	},
+	"default_locale": "sv",
 	"permissions": [
 		"activeTab",
 		"contextMenus"
