@@ -1,0 +1,34 @@
+{
+	"items": [{
+			"menuName": "Select som p-elements",
+			"menuID": "select-p",
+			"query": [{
+					"selector": "p",
+					"innerHtml": "<br />"
+				},
+				{
+					"selector": "p",
+					"innerText": "Sample text"
+				},
+				{
+					"selector": "p",
+					"innerText": "Sample text"
+				}
+			]
+		},
+		{
+			"menuName": "Select som id's or CSS-classes",
+			"menuID": "select-id",
+			"query": [{
+					"selector": "#firstID"
+				},
+				{
+					"selector": "#secondId"
+				},
+				{
+					"selector": ".cssClass"
+				}
+			]
+		}
+	]
+}

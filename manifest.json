@@ -19,8 +19,12 @@
 		"256": "icons/Proceedo-256.png"
 	},
 	"default_locale": "sv",
+	"options_ui": {
+		"page": "options.html"
+	},
 	"permissions": [
 		"activeTab",
-		"contextMenus"
+		"contextMenus",
+		"storage"
 	]
 }
