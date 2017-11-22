@@ -1,51 +1,47 @@
+const _browser = (setBrowser() === 'chrome') ? chrome : browser
+const browserType = setBrowser()
+logger(browserType)
+
 function createContextMenu(config) {
   logger("Creating context menu items")
   var menuItems = config.items
   var sigremLib = './lib/sigrem-lib/remove-signature.js'
 
   function prefix(id = '') {
-    let preFixed = `${browser.i18n.getMessage("extensionName")}_${id}`
+    let preFixed = `${_browser.i18n.getMessage("extensionName")}_${id}`
     return preFixed
   }
+
   function dePrefix(id) {
     let len = prefix().length
     let dePreFixed = id.slice(len, id.length)
     return dePreFixed
   }
-  menuItems.forEach(item => {
-    let id = prefix(item.menuID)
-    let name = item.menuName
+  menuItems.forEach((item, index) => {
+    let id = prefix(index)
+    let name = item.name
 
     logger(`Menuitem [${id}] created`)
-    browser.contextMenus.create({
+    _browser.contextMenus.create({
       id: id,
       title: name
     })
   })
 
-  browser.contextMenus.onClicked.addListener(function (info, tab) {
-    let menuID = dePrefix(info.menuItemId)
+  _browser.contextMenus.onClicked.addListener(function (info, tab) {
+    let clickedIndex = dePrefix(info.menuItemId)
+    let clickedConfig = config.items[clickedIndex]
+    logger(`menu item [${clickedConfig.name}] clicked`)
 
-    var menuConfig = filterObj("menuID", menuID, config.items)
-
-    var menuConfString = JSON.stringify(menuConfig, null, 4)
-    logger(`menu item [${menuConfig[0].menuID}] clicked`)
-
-    var configItems = config.items
-    // browser.tabs.executeScript({})
-    // if (info.menuItemId == "remove-lines") {
-    //   browser.tabs.executeScript({
-    //     file: sigremLib
-    //   })
-    // }
+    _browser.tabs.executeScript(tab.id, {
+        code: `var config = ${JSON.stringify(clickedConfig)}` // make config available to lib
+      },
+      function () {
+        _browser.tabs.executeScript(tab.id, {
+          file: sigremLib
+        })
+      })
   })
-}
-
-function filterObj(key, value, jsonArray) {
-  var result = jsonArray.filter(function (obj) {
-    return obj[key] == value
-  })
-  return result
 }
 
 function onError(error) {
@@ -60,10 +56,22 @@ function onGot(item) {
   createContextMenu(json)
 }
 
-var getting = browser.storage.local.get("json")
-getting.then(onGot, onError)
+var getting = _browser.storage.local.get({json: {}}, function (data, error) {
+  if (data)
+    onGot(data)
+  else
+    onError(error)
+})
 
 function logger(msg) {
-  var extensionName = browser.i18n.getMessage("extensionName")
-  console.log(`[${extensionName}]: ${msg}`)
+  var extensionName = _browser.i18n.getMessage("extensionName")
+  let stringified = JSON.stringify(msg, null, 4)
+  console.log(`[${extensionName}]: ${stringified}`)
+}
+
+function setBrowser() {
+  if (typeof browser !== 'undefined')
+    return 'browser'
+  else
+    return 'chrome'
 }

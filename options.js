@@ -1,7 +1,18 @@
+function setBrowser() {
+	if (typeof browser !== 'undefined')
+		return 'browser'
+	else
+		return 'chrome'
+}
+const _browser = (setBrowser() === 'chrome') ? chrome : browser
+const browserType = setBrowser()
+
 function saveOptions(e) {
 	e.preventDefault()
-	browser.storage.local.set({
+	_browser.storage.local.set({
 		json: document.querySelector("#json").value
+	}, function () {
+		logger(`writing ${browserType} storage`)
 	})
 }
 
@@ -9,11 +20,10 @@ function restoreOptions() {
 
 	function setCurrentChoice(result) {
 		document.querySelector("#json").value = result.json ||
-`{
+			`{
 	"items": [
 		{
 			"menuName": "Select som p-elements",
-			"menuID": "select-p",
 			"query": [
 				{
 					"selector": "",
@@ -27,12 +37,37 @@ function restoreOptions() {
 	}
 
 	function onError(error) {
-		console.log(`Error: ${error}`)
+		logger(`Error: ${error}`)
 	}
-
-	var getting = browser.storage.local.get("json")
-	getting.then(setCurrentChoice, onError)
+	var defaultData = `{
+			"items": [
+				{
+					"name": "Select som p-elements",
+					"query": [
+						{
+							"selector": "",
+							"innerHtml": "",
+							"innerText": "Sample text"
+						}
+					]
+				}
+			]
+		}`
+	var getting = _browser.storage.local.get({
+		json: defaultData
+	}, function (data, error) {
+		if (data)
+			setCurrentChoice(data)
+		else
+			onError(error)
+	})
 }
 
 document.addEventListener("DOMContentLoaded", restoreOptions)
 document.querySelector("form").addEventListener("submit", saveOptions)
+
+function logger(msg) {
+	var extensionName = _browser.i18n.getMessage("extensionName")
+	let stringified = JSON.stringify(msg, null, 4)
+	console.log(`[${extensionName}]: ${stringified}`)
+}
