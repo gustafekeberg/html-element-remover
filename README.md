@@ -9,7 +9,7 @@ A browser extension to hide or delete html elements. The extension will add cont
 
 This extension should work fine in Firefox, Chrome, Edge or any other browser that supports the [WebExtensions APIs](https://developer.mozilla.org/en-US/Add-ons/WebExtensions).
 
-## Extension config
+## Config
 
 When the extension is installed it needs to be configured. At the moment the configuration is written as JSON in a textarea.
 
