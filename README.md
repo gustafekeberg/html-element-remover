@@ -1,4 +1,6 @@
-# html-element-remover
+<img align="right" src="https://raw.githubusercontent.com/gustafekeberg/html-element-remover/master/assets/icon-128.png">
+
+# HTML-element remover
 
 A browser extension to hide or delete html elements. The extension will add context menu items depending on the config.
 
@@ -11,7 +13,7 @@ When the extension is installed it need to be configured. At the moment the conf
 
 Configuring the extension can be tricky. It will not work if the JSON data is not valid. This is an area of improvement.
 
-## Example config:
+## Example config
 
 - The `items = array` will be shown in a context menu when right clicking on the document body.
 - Each item can perform different tasks.
