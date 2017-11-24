@@ -4,18 +4,43 @@
 
 <head>
 	<meta charset="utf-8">
+	<style>
+	textarea {
+		width: 100%;
+		max-width: 100%;
+		min-height: 30em;
+		font-family: monospace;
+		font-size: 110%;
+	}
+	fieldset {
+		border: 0
+	}
+
+	label {
+		font-weight: bold
+	}
+	button {
+		float: right
+	}
+	fieldset > * {
+		margin: 1em auto;
+	}
+	</style>
 </head>
 
 <body>
 
-	<form>
-		<label>Options JSON
-			<textarea rows="30" cols="80" id="json">
+	<form id="config-form">
+		<fieldset>
+			
+			<label>Options JSON
+			</label>
+			
+			<textarea id="json" form="config-form">
 			</textarea>
-		</label>
-		<button type="submit">Save</button>
+			<button type="submit">Save</button>
+		</fieldset>
 	</form>
-
 	<script src="options.js"></script>
 
 </body>
