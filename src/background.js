@@ -1,13 +1,14 @@
 const _browser = require('extensionizer')
 const remover = './assets/remover.js'
 const { logger } = require('./logger')
+const extensionVarName = _browser.i18n.getMessage("extensionName").split(' ').join('-').toLowerCase()
 
 function createContextMenu(config) {
   logger("Creating context menu items")
   var menuItems = config.items
   
   function prefix(id = '') {
-    let preFixed = `${_browser.i18n.getMessage("extensionName")}_${id}`
+    let preFixed = `${extensionVarName}_${id}`
     return preFixed
   }
 
@@ -33,7 +34,7 @@ function createContextMenu(config) {
     logger(`menu item [${clickedConfig.name}] clicked`)
 
     _browser.tabs.executeScript(tab.id, {
-        code: `var config = ${JSON.stringify(clickedConfig)}` // make config available to lib
+      code: `var config = ${JSON.stringify(clickedConfig)}, extensionName = '${extensionVarName}'` // make config available to lib
       },
       function () {
         _browser.tabs.executeScript(tab.id, {
@@ -51,10 +52,12 @@ function onGot(item) {
   var json = {}
   if (item.json) {
     json = JSON.parse(item.json)
+    logger(json)
   }
   createContextMenu(json)
 }
 
+logger("Getting data")
 var getting = _browser.storage.local.get({json: {}}, function (data, error) {
   if (data)
     onGot(data)
