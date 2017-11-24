@@ -1,7 +1,6 @@
 {
 	"items": [{
-			"menuName": "Select som p-elements",
-			"menuID": "select-p",
+			"name": "Select som p-elements",
 			"query": [{
 					"selector": "p",
 					"innerHtml": "<br />"
@@ -17,8 +16,8 @@
 			]
 		},
 		{
-			"menuName": "Select som id's or CSS-classes",
-			"menuID": "select-id",
+			"name": "Select som id's or CSS-classes to delete",
+			"delete": true,
 			"query": [{
 					"selector": "#firstID"
 				},
