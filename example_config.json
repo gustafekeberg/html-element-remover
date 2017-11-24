@@ -1,31 +1,23 @@
 {
-	"items": [{
-			"name": "Select som p-elements",
-			"query": [{
-					"selector": "p",
-					"innerHtml": "<br />"
-				},
+	"items": [
+		{
+			"name": "Select some p-elements",
+			"query": [
 				{
-					"selector": "p",
-					"innerText": "Sample text"
-				},
-				{
-					"selector": "p",
+					"delete": true,
+					"selector": "",
+					"innerHtml": "",
 					"innerText": "Sample text"
 				}
 			]
 		},
 		{
-			"name": "Select som id's or CSS-classes to delete",
-			"delete": true,
-			"query": [{
-					"selector": "#firstID"
-				},
+			"name": "Select some other elements",
+			"query": [
 				{
-					"selector": "#secondId"
-				},
-				{
-					"selector": ".cssClass"
+					"selector": "",
+					"innerHtml": "",
+					"innerText": "Sample text"
 				}
 			]
 		}
