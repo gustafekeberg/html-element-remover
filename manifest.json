@@ -10,17 +10,21 @@
 		]
 	},
 	"icons": {
-		"20": "icons/Proceedo-20.png",
-		"25": "icons/Proceedo-25.png",
-		"30": "icons/Proceedo-30.png",
-		"40": "icons/Proceedo-40.png",
-		"48": "icons/Proceedo-48.png",
-		"96": "icons/Proceedo-96.png",
-		"256": "icons/Proceedo-256.png"
+		"20": "icons/icon.svg",
+		"25": "icons/icon.svg",
+		"30": "icons/icon.svg",
+		"40": "icons/icon.svg",
+		"48": "icons/icon.svg",
+		"96": "icons/icon.svg",
+		"256": "icons/icon.svg"
 	},
 	"default_locale": "sv",
+	"options_ui": {
+		"page": "options.html"
+	},
 	"permissions": [
 		"activeTab",
-		"contextMenus"
+		"contextMenus",
+		"storage"
 	]
 }
