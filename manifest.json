@@ -10,13 +10,13 @@
 		]
 	},
 	"icons": {
-		"20": "assets/icon.svg",
-		"25": "assets/icon.svg",
-		"30": "assets/icon.svg",
-		"40": "assets/icon.svg",
-		"48": "assets/icon.svg",
-		"96": "assets/icon.svg",
-		"256": "assets/icon.svg"
+		"20": "./assets/icon-20.png",
+		"25": "./assets/icon-25.png",
+		"30": "./assets/icon-30.png",
+		"40": "./assets/icon-40.png",
+		"48": "./assets/icon-48.png",
+		"96": "./assets/icon-96.png",
+		"256": "./assets/icon-256.png"
 	},
 	"default_locale": "sv",
 	"options_ui": {
