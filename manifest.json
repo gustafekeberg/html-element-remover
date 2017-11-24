@@ -10,13 +10,13 @@
 		]
 	},
 	"icons": {
-		"20": "icons/icon.svg",
-		"25": "icons/icon.svg",
-		"30": "icons/icon.svg",
-		"40": "icons/icon.svg",
-		"48": "icons/icon.svg",
-		"96": "icons/icon.svg",
-		"256": "icons/icon.svg"
+		"20": "assets/icon.svg",
+		"25": "assets/icon.svg",
+		"30": "assets/icon.svg",
+		"40": "assets/icon.svg",
+		"48": "assets/icon.svg",
+		"96": "assets/icon.svg",
+		"256": "assets/icon.svg"
 	},
 	"default_locale": "sv",
 	"options_ui": {
