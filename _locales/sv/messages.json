@@ -1,14 +1,10 @@
 {
-	"contextMenuItem": {
-		"message": "Ta bort signaturrad",
-		"description": "Context menu item text."
-	},
 	"extensionDescription": {
-		"message": "Detta programtillägg skapar ett nytt menyalternativ som gör det möjligt att ta bort den irriterande signaturraden från rekvisitioner skapade genom http://www.proceedo.net/.\n\nMenyalternativet får man fram när man högerklickar på en rekvisition som öppnats i webbläsaren.",
-		"description": "Description for extension"
+		"message": "Tar bort eller gömmer element från html-dokumentet. Använd inställningarna för att definera en förfrågan som letar upp element att ta bort via dess CSS-class",
+		"description": "Beskrivning för tillägget"
 	},
 	"extensionName": {
 		"message": "Signaturrad-borttagare",
-		"description": "Name used for extension"
+		"description": "Tilläggets namn"
 	}
 }

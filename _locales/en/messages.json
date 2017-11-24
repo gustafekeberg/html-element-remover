@@ -1,14 +1,10 @@
 {
-	"contextMenuItem": {
-		"message": "Remove signature lines",
-		"description": "Context menu item text."
-	},
 	"extensionDescription": {
-		"message": "Removes annoying signature line from requisitions aquired from http://www.proceedo.net/.\n\nRight click on the requisition when it's opened in a browser window to activate the plugin function.",
-		"description": "Description for extension"
+		"message": "Removes or hides elements from html document. Use config to define queries to remove elements by it's CSS-selector.",
+		"description": "Extension description"
 	},
 	"extensionName": {
-		"message": "Signature line remover",
-		"description": "Name used for extension"
+		"message": "HTML-element remover",
+		"description": "Extension name"
 	}
 }
