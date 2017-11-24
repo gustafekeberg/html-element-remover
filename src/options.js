@@ -29,7 +29,7 @@ function restoreOptions() {
 	}
 
 	function onError(error) {
-		logger(`Error: ${error}`)
+		logger(`error: ${error}`)
 	}
 	var getting = _browser.storage.local.get({
 		json: defaultData

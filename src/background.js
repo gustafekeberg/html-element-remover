@@ -4,7 +4,7 @@ const { logger } = require('./logger')
 const extensionVarName = _browser.i18n.getMessage("extensionName").split(' ').join('-').toLowerCase()
 
 function createContextMenu(config) {
-  logger("Creating context menu items")
+  logger(`creating context menu items`)
   var menuItems = config.items
   
   function prefix(id = '') {
@@ -21,7 +21,7 @@ function createContextMenu(config) {
     let id = prefix(index)
     let name = item.name
 
-    logger(`Menuitem [${id}] created`)
+    logger(`menuitem [${name}] created`)
     _browser.contextMenus.create({
       id: id,
       title: name
@@ -45,19 +45,19 @@ function createContextMenu(config) {
 }
 
 function onError(error) {
-  logger(`Error: ${error}`)
+  logger(`error: ${error}`)
 }
 
 function onGot(item) {
   var json = {}
   if (item.json) {
     json = JSON.parse(item.json)
-    logger(json)
+    // logger(json)
   }
   createContextMenu(json)
 }
 
-logger("Getting data")
+logger(`reading config`)
 var getting = _browser.storage.local.get({json: {}}, function (data, error) {
   if (data)
     onGot(data)
