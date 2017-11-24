@@ -5,14 +5,15 @@ function setBrowser() {
 		return 'chrome'
 }
 const _browser = (setBrowser() === 'chrome') ? chrome : browser
-const browserType = setBrowser()
+// const browserType = setBrowser()
+// const _browser = require('extensionizer')
 
 function saveOptions(e) {
 	e.preventDefault()
 	_browser.storage.local.set({
 		json: document.querySelector("#json").value
 	}, function () {
-		logger(`writing ${browserType} storage`)
+		logger(`writing to browser storage`)
 	})
 }
 

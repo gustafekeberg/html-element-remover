@@ -1,6 +1,8 @@
 const _browser = (setBrowser() === 'chrome') ? chrome : browser
 const browserType = setBrowser()
-logger(browserType)
+// const _browser = require('extensionizer')
+
+// logger(browserType)
 
 function createContextMenu(config) {
   logger("Creating context menu items")
