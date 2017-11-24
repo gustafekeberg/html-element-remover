@@ -1,12 +1,5 @@
-function setBrowser() {
-	if (typeof browser !== 'undefined')
-		return 'browser'
-	else
-		return 'chrome'
-}
-const _browser = (setBrowser() === 'chrome') ? chrome : browser
-// const browserType = setBrowser()
-// const _browser = require('extensionizer')
+const _browser = require('extensionizer')
+const {logger} = require('./logger')
 
 function saveOptions(e) {
 	e.preventDefault()
@@ -67,8 +60,8 @@ function restoreOptions() {
 document.addEventListener("DOMContentLoaded", restoreOptions)
 document.querySelector("form").addEventListener("submit", saveOptions)
 
-function logger(msg) {
-	var extensionName = _browser.i18n.getMessage("extensionName")
-	let stringified = JSON.stringify(msg, null, 4)
-	console.log(`[${extensionName}]: ${stringified}`)
-}
+// function logger(msg) {
+// 	var extensionName = _browser.i18n.getMessage("extensionName")
+// 	let stringified = JSON.stringify(msg, null, 4)
+// 	console(`[${extensionName}]: ${stringified}`)
+// }

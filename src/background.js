@@ -1,14 +1,11 @@
-const _browser = (setBrowser() === 'chrome') ? chrome : browser
-const browserType = setBrowser()
-// const _browser = require('extensionizer')
-
-// logger(browserType)
+const _browser = require('extensionizer')
+const remover = './assets/remover.js'
+const { logger } = require('./logger')
 
 function createContextMenu(config) {
   logger("Creating context menu items")
   var menuItems = config.items
-  var sigremLib = './lib/sigrem-lib/remove-signature.js'
-
+  
   function prefix(id = '') {
     let preFixed = `${_browser.i18n.getMessage("extensionName")}_${id}`
     return preFixed
@@ -40,7 +37,7 @@ function createContextMenu(config) {
       },
       function () {
         _browser.tabs.executeScript(tab.id, {
-          file: sigremLib
+          file: remover
         })
       })
   })
@@ -64,16 +61,3 @@ var getting = _browser.storage.local.get({json: {}}, function (data, error) {
   else
     onError(error)
 })
-
-function logger(msg) {
-  var extensionName = _browser.i18n.getMessage("extensionName")
-  let stringified = JSON.stringify(msg, null, 4)
-  console.log(`[${extensionName}]: ${stringified}`)
-}
-
-function setBrowser() {
-  if (typeof browser !== 'undefined')
-    return 'browser'
-  else
-    return 'chrome'
-}
