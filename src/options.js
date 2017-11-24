@@ -20,6 +20,8 @@ function saveOptions(e) {
 	}, function () {
 		logger(`writing to browser storage`)
 	})
+	_browser.runtime.reload()
+	logger(`reloading extension`)
 }
 
 function restoreOptions() {

@@ -1,6 +1,6 @@
 {
   "name": "html-element-remover",
-  "version": "1.3.2",
+  "version": "1.3.3",
   "description": "Remove html elements from document",
   "main": "background.js",
   "scripts": {
@@ -8,10 +8,10 @@
     "start:firefox:watch": "npm run build:all && parallelshell 'web-ext run --source-dir ./dist/' 'npm run watch:all'",
     "build": "npm run build:all",
     "build:all": "npm run build:locales && npm run build:manifest && npm run build:assets && npm run build:html && npm run build:js && npm run build:locales",
-    "build:manifest": "cp ./manifest.json ./dist/",
+    "build:manifest": "cp ./src/manifest.json ./dist/",
     "build:html": "cp ./src/*.html ./dist/",
     "build:js": "npm run browserify:all",
-    "build:locales": "cp -R ./_locales ./dist/",
+    "build:locales": "cp -R ./src/_locales ./dist/",
     "build:assets": "mkdir -p ./dist/assets && cp ./assets/* ./dist/assets/",
     "browserify:background": "browserify ./src/background.js --outfile ./dist/background.js",
     "browserify:options": "browserify ./src/options.js --outfile ./dist/options.js",
