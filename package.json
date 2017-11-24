@@ -1,6 +1,6 @@
 {
   "name": "html-element-remover",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "description": "Remove html elements from document",
   "main": "background.js",
   "scripts": {
@@ -30,5 +30,9 @@
     "onchange": "^3.2.1",
     "parallelshell": "^3.0.2",
     "web-ext": "^2.2.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gustafekeberg/html-element-remover" 
   }
 }
