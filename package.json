@@ -1,12 +1,13 @@
 {
   "name": "html-element-remover",
-  "version": "1.3.0",
+  "version": "1.3.2",
   "description": "Remove html elements from document",
   "main": "background.js",
   "scripts": {
     "start:firefox": "web-ext run --source-dir ./dist/",
     "start:firefox:watch": "npm run build:all && parallelshell 'web-ext run --source-dir ./dist/' 'npm run watch:all'",
-    "build:all": "npm run build:manifest && npm run build:assets && npm run build:html && npm run build:js && npm run build:locales",
+    "build": "npm run build:all",
+    "build:all": "npm run build:locales && npm run build:manifest && npm run build:assets && npm run build:html && npm run build:js && npm run build:locales",
     "build:manifest": "cp ./manifest.json ./dist/",
     "build:html": "cp ./src/*.html ./dist/",
     "build:js": "npm run browserify:all",
@@ -19,7 +20,6 @@
     "watch:assets": "onchange './assets/*' -- npm run build:assets",
     "watch:html": "onchange './src/*.html' -- npm run build:html",
     "watch:js": "onchange './src/*.js' -- npm run browserify:all",
-    "preinstall": "npm run build:all",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Gustaf Ekeberg",
