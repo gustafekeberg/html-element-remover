@@ -1,25 +1,23 @@
 {
-	"items": [
-		{
-			"name": "Select some p-elements",
-			"query": [
-				{
-					"delete": true,
-					"selector": "",
-					"innerHtml": "",
-					"innerText": "Sample text"
-				}
-			]
-		},
-		{
-			"name": "Select some other elements",
-			"query": [
-				{
-					"selector": "",
-					"innerHtml": "",
-					"innerText": "Sample text"
-				}
-			]
-		}
-	]
+  "items": [{
+      "name": "Select some p-elements",
+      "query": [{
+          "delete": true,
+          "selector": "p",
+          "innerText": "Sample text",
+          "innerHTML": "<b>HTML</b>"
+        },
+        {
+          "selector": "p"
+        }
+      ]
+    },
+    {
+      "name": "Select some other css-class",
+      "query": [{
+        "selector": ".other",
+        "innerHTML": "<b>HTML</b>"
+      }]
+    }
+  ]
 }
