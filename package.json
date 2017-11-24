@@ -6,7 +6,8 @@
   "scripts": {
     "start:firefox": "web-ext run --source-dir ./dist/",
     "start:firefox:watch": "npm run build:all && parallelshell 'web-ext run --source-dir ./dist/' 'npm run watch:all'",
-    "build:all": "npm run build:assets && npm run build:html && npm run build:js && npm run build:locales",
+    "build:all": "npm run build:manifest && npm run build:assets && npm run build:html && npm run build:js && npm run build:locales",
+    "build:manifest": "cp ./manifest.json ./dist/",
     "build:html": "cp ./src/*.html ./dist/",
     "build:js": "npm run browserify:all",
     "build:locales": "cp -R ./_locales ./dist/",
