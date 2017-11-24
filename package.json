@@ -1,7 +1,7 @@
 {
   "name": "html-element-remover",
   "version": "1.2.0",
-  "description": "Remove html element from document",
+  "description": "Remove html elements from document",
   "main": "background.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
