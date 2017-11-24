@@ -9,11 +9,11 @@ A browser extension to hide or delete html elements. The extension will add cont
 
 This extension should work fine in Firefox, Chrome, Edge or any other browser that supports the [WebExtensions APIs](https://developer.mozilla.org/en-US/Add-ons/WebExtensions).
 
-When the extension is installed it need to be configured. At the moment the configuration is written as JSON in a textarea.
+## Extension config
+
+When the extension is installed it needs to be configured. At the moment the configuration is written as JSON in a textarea.
 
 Configuring the extension can be tricky. It will not work if the JSON data is not valid. This is an area of improvement.
-
-## Example config
 
 - The `items = array` will be shown in a context menu when right clicking on the document body.
 - Each item can perform different tasks.
@@ -23,6 +23,8 @@ Configuring the extension can be tricky. It will not work if the JSON data is no
   - `selector = string` - the CSS selector to match
   - `innerText = string` - only match if the selected element has this inner text
   - `innerHTML = string` - only match if the selected element has this inner HTML
+
+## Example config
 
 ```JSON
 {
