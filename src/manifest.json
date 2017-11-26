@@ -18,7 +18,7 @@
 		"96": "./assets/icon-96.png",
 		"256": "./assets/icon-256.png"
 	},
-	"default_locale": "sv",
+	"default_locale": "en",
 	"options_ui": {
 		"page": "options.html"
 	},
