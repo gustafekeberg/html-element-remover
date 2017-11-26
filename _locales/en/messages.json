@@ -6,5 +6,13 @@
 	"extensionName": {
 		"message": "HTML-element remover",
 		"description": "Extension name"
+	},
+	"configDescription": {
+		"message": "<p>When the extension is installed it needs to be configured. At the moment the configuration is written as JSON in a textarea.</p>Configuring the extension can be tricky. It will not work if the JSON data is not valid. This is an area of improvement.</p> <ul> <li>The <code>items = array</code> will be shown in a context menu when right clicking on the document body.</li> <li>Each <code>item</code> can perform different tasks.</li> <li>The <code>name = string</code> will be displayed as the context menu item.</li> <li>The query = array is the defined task to perform on the document body. Multiple queries can be configured on each item.</li> <ul><li>delete = boolean - if set totrue the matched element will be removed from the document, otherwise it will be hidden via CSS</li> <li>selector = string - the CSS selector to match</li> <li>innerText = string - only match if the selected element has this inner text</li> <li>innerHTML = string - only match if the selected element has this inner HTML</li></ul></ul>",
+		"description": "Text on options page"
+	},
+	"configTitle": {
+		"message": "<h1>Setup</h1>",
+		"description": "Options header"
 	}
 }
