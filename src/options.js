@@ -4,10 +4,11 @@ const defaultData =
 `{
   "items": [{
       "name": "Select all <p> with 'innerText' sample text and delete from document",
+      "action": "print",
       "query": [{
           "delete": true,
           "selector": "p",
-          "innerText": "Sample text"
+          "innerText": "Sample text",
         },
         {
           "delete": true,
@@ -39,7 +40,6 @@ function saveOptions(e) {
 function showDescription() {
   let description = _browser.i18n.getMessage("configDescription")
   let title = _browser.i18n.getMessage("configTitle")
-  // console.log(description)
   let descriptionElement = document.getElementById("description")
   let html = `${title} ${description}`
   descriptionElement.innerHTML = html
