@@ -2,6 +2,11 @@ const _browser = require('extensionizer')
 const remover = './assets/remover.js'
 const { logger } = require('./logger')
 const extensionVarName = _browser.i18n.getMessage("extensionName").split(' ').join('-').toLowerCase()
+const CSSClasses = {
+  tagName: extensionVarName,
+  tagDelete: `${extensionVarName}-delete`,
+  tagHide: `${extensionVarName}-hide`
+}
 
 function createContextMenu(config) {
   logger(`creating context menu items`)
@@ -32,9 +37,9 @@ function createContextMenu(config) {
     let clickedIndex = dePrefix(info.menuItemId)
     let clickedConfig = config.items[clickedIndex]
     logger(`menu item [${clickedConfig.name}] clicked`)
-
+    addStyle()
     _browser.tabs.executeScript(tab.id, {
-      code: `var config = ${JSON.stringify(clickedConfig)}, extensionName = '${extensionVarName}'` // make config available to lib
+      code: `var config = ${JSON.stringify(clickedConfig)}, extensionName = '${extensionVarName}', CSSClasses = ${JSON.stringify(CSSClasses)}` // make config available to lib
       },
       function () {
         _browser.tabs.executeScript(tab.id, {
@@ -44,6 +49,22 @@ function createContextMenu(config) {
   })
 }
 
+function addStyle() {
+  var CSS =
+    `
+    .${CSSClasses.tagName} {
+      opacity: 1
+    }
+    .${CSSClasses.tagHide} {
+      opacity: 0;
+      transition: all 500ms
+    }
+    `
+  var insertingCSS = _browser.tabs.insertCSS({code: CSS})
+  insertingCSS.then(null, onError())
+}
+
+
 function onError(error) {
   logger(`error: ${error}`)
 }
@@ -52,7 +73,6 @@ function onGot(item) {
   var json = {}
   if (item.json) {
     json = JSON.parse(item.json)
-    // logger(json)
   }
   createContextMenu(json)
 }

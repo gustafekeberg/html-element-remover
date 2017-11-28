@@ -1,7 +1,3 @@
-var tagName = `${extensionName}`
-var tagDelete = `${tagName}-remove`
-var tagHide = `${tagName}-hide`
-
 function log(msg) {
 	let formattedMsg = `[${extensionName}] ${JSON.stringify(msg, null, 4)}`
 	console.log(formattedMsg)
@@ -19,7 +15,7 @@ function processQuery(config) {
 function tagElements(elements, par) {
 	log('tagElements')
 	elements.forEach(element => {
-		if (par.innerHTML == element.innerHTML || par.innerText == element.innerText)
+		if ((par.innerHTML || par.innerText) && (par.innerHTML == element.innerHTML || par.innerText == element.innerText) )
 			addClass(element, par)
 		else if (!par.innerHTML && !par.innerText)
 			addClass(element, par)
@@ -30,7 +26,7 @@ function delMarkedElements() {
 	log(`delMarkedElements`)
 
 	function getEl() {
-		return document.querySelector(`.${tagDelete}`);
+		return document.querySelector(`.${CSSClasses.tagDelete}`);
 	}
 
 	function delEl(el) {
@@ -43,42 +39,26 @@ function delMarkedElements() {
 
 function addClass(element, par) {
 	log(`addClass`)
-	element.classList.add(tagName)
+	element.classList.add(CSSClasses.tagName)
 	if (par.delete)
-		element.classList.add(tagDelete)
+		element.classList.add(CSSClasses.tagDelete)
 	else
-		element.classList.add(tagHide)
-}
-
-function addStyleElement() {
-	var CSS =
-		`
-	.${tagName} {
-		opacity: 1
-	}
-	.${tagHide} {
-		opacity: 0;
-		transition: all 500ms
-	}
-	`
-
-	var body = document.querySelector('body')
-	var style = document.createElement('style')
-	style.innerHTML = CSS
-	body.appendChild(style)
+		element.classList.add(CSSClasses.tagHide)
 }
 
 function performAction(config) {
-	let action = config.action
-	log(`performAction [${action}]`)
+	let action = config.action 
 	switch (action) {
 		case 'print':
-			window.print()
-			break;
+		window.print()
+		break;
+		default:
+		action = 'no action'
+		break
 	}
+	log(`performAction [${action}]`)
 }
 
-addStyleElement()
 processQuery(config)
 delMarkedElements()
 performAction(config)
