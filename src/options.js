@@ -8,7 +8,7 @@ const defaultData =
       "query": [{
           "delete": true,
           "selector": "p",
-          "innerText": "Sample text",
+          "innerText": "Sample text"
         },
         {
           "delete": true,

@@ -35,7 +35,7 @@ Configuring the extension can be tricky. It will not work if the JSON data is no
       "query": [{
           "delete": true,
           "selector": "p",
-          "innerText": "Sample text",
+          "innerText": "Sample text"
         },
         {
           "delete": true,
