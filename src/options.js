@@ -3,7 +3,7 @@ const { logger } = require('./logger')
 const defaultData =
 `{
   "items": [{
-      "name": "Select all <p> with 'innerText' sample text and delete from document",
+      "name": "Select all <p> with 'innerText' sample text and delete from document and print",
       "action": "print",
       "query": [{
           "delete": true,
