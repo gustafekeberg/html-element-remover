@@ -1,6 +1,6 @@
 {
   "name": "html-element-remover",
-  "version": "0.3.4-snapshot",
+  "version": "0.3.5",
   "description": "Remove html elements from document",
   "main": "background.js",
   "scripts": {
