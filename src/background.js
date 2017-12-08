@@ -7,37 +7,51 @@ const extensionVarName = _browser.i18n.getMessage("extensionName").split(' ').jo
 const CSSClasses = {
   tagName: extensionVarName,
   tagDelete: `${extensionVarName}-delete`,
-  tagHide: `${extensionVarName}-hide`
+  tagHide: `${extensionVarName}-hide`,
+  tagRemove: `${extensionVarName}-remove`
 }
+const CSS =
+`
+.${CSSClasses.tagName} {
+  outline: 2pt dashed #00aeff !important
+}
+.${CSSClasses.tagHide} {
+  visibility: hidden !important
+}
+.${CSSClasses.tagRemove} {
+  display: none !important
+}
+`
+var cssInserted = false
 
 function createContextMenu(config) {
   logger(`creating context menu items`)
   var menuItems = config.items
   createMenuItems(menuItems)
-  createMenuItemSeparator()
-  createMenuItemUndo()
+  if (config.undo)
+    createMenuItemUndo()
 
   _browser.contextMenus.onClicked.addListener(function (info, tab) {
-    let clickedIndex = dePrefix(info.menuItemId)
-
-    if (clickedIndex !== config.items.length || clickedIndex !== config.items.length - 1) { // Run if not second last or not last
-
+    var dePreFixed = dePrefix(info.menuItemId)
+    if (dePreFixed == 'undo')
+      executeScript({undo: true}, tab)
+    else {
+      let clickedIndex = dePreFixed
       let clickedConfig = config.items[clickedIndex]
       logger(`menu item [${clickedConfig.name}] clicked`)
       addStyle()
-      executeScript(clickedConfig)
-      
-    } else if (clickedConfig == config.items.length) { // Index of separator and undo is at second last and last
-      clickedConfig = 'config that removes changes goes here'
-      executeScript(clickedConfig)
-
+      executeScript(clickedConfig, tab)
     }
   })
 }
 
-function executeScript(clickedConfig) {
+function executeScript(clickedConfig, tab) {
+  let config = {
+    params: clickedConfig,
+    undo: clickedConfig.undo == true ? true : false
+  }
   _browser.tabs.executeScript(tab.id, {
-      code: `var config = ${JSON.stringify(clickedConfig)}, extensionName = '${extensionVarName}', CSSClasses = ${JSON.stringify(CSSClasses)}` // make config available to lib
+      code: `var config = ${JSON.stringify(config)}, extensionName = '${extensionVarName}', CSSClasses = ${JSON.stringify(CSSClasses)}` // make config available to lib
     },
     function () {
       _browser.tabs.executeScript(tab.id, {
@@ -54,6 +68,7 @@ function createMenuItemSeparator() {
 }
 
 function createMenuItemUndo() {
+  createMenuItemSeparator() // add separator before menu item is added
   _browser.contextMenus.create({
     id: prefix("undo"),
     title: "Undo (remove all hidden elements)"
@@ -74,20 +89,13 @@ function createMenuItems(menuItems) {
 }
 
 function addStyle() {
-  var CSS =
-    `
-    .${CSSClasses.tagName} {
-      opacity: 1
-    }
-    .${CSSClasses.tagHide} {
-      opacity: 0;
-      transition: all 500ms
-    }
-    `
-  var insertingCSS = _browser.tabs.insertCSS({
-    code: CSS
-  })
-  insertingCSS.then(null, onError())
+  if (cssInserted == false)
+  {
+    var insertingCSS = _browser.tabs.insertCSS({
+      code: CSS
+    })
+    insertingCSS.then(cssInserted = true, onError())
+  }
 }
 
 function prefix(id = '') {

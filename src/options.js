@@ -2,8 +2,9 @@ const _browser = require('extensionizer')
 const { logger } = require('./logger')
 const defaultData =
 `{
+  "undo": false,
   "items": [{
-      "name": "Select all <p> with 'innerText' sample text and delete from document and print",
+      "name": "Select all <p> with 'innerText' sample text and delete from document",
       "action": "print",
       "query": [{
           "delete": true,
@@ -11,9 +12,13 @@ const defaultData =
           "innerText": "Sample text"
         },
         {
-          "delete": true,
+          "remove": true,
           "selector": "p",
           "innerHTML": "<b>HTML</b>"
+        },
+        {
+          "preview": true,
+          "selector": "p"
         }
       ]
     },
