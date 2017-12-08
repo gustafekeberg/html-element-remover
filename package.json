@@ -5,7 +5,7 @@
   "main": "background.js",
   "scripts": {
     "start:firefox": "web-ext run --source-dir ./dist/",
-    "start:firefox-developer": "web-ext run --source-dir ./dist/ --firefox=firefox-developer",
+    "start:firefox-developer": "web-ext run --source-dir ./dist/ --firefox=/opt/firefox_dev/firefox",
     "start:firefox:watch": "npm run build:all && parallelshell 'npm run start:firefox' 'npm run watch:all'",
     "start:firefox-developer:watch": "npm run build:all && parallelshell 'npm run start:firefox-developer' 'npm run watch:all'",
     "build": "npm run build:all",
