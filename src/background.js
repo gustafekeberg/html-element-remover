@@ -71,7 +71,7 @@ function createMenuItemUndo() {
   createMenuItemSeparator() // add separator before menu item is added
   _browser.contextMenus.create({
     id: prefix("undo"),
-    title: "Undo (remove all hidden elements)"
+    title: "Undo changes"
   })
 }
 
